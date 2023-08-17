@@ -1,5 +1,5 @@
 const userInput = document.getElementById("date");
-userInput.max = new Date().toISOString().split("T")[0];
+// userInput.max = new Date().toISOString().split("T")[0];
 const result = document.getElementById("result");
 
 function calculateAge() {
@@ -19,24 +19,28 @@ function calculateAge() {
 
   y3 = y2 - y1;
 
-  if (m2 >= m1) {
-    m3 = m2 - m1;
-  } else {
-    y3--;
-    m3 = 12 + m2 - m1;
-  }
+  if (birthdate <= today) {
+    if (m2 >= m1) {
+      m3 = m2 - m1;
+    } else {
+      y3--;
+      m3 = 12 + m2 - m1;
+    }
 
-  if (d2 >= d1) {
-    d3 = d2 - d1;
+    if (d2 >= d1) {
+      d3 = d2 - d1;
+    } else {
+      m3--;
+      d3 = getDateInMonths(y1, m1) + d2 - d1;
+    }
+    if (m3 < 0) {
+      m3 = 11;
+      y3--;
+    }
+    result.innerHTML = `You are <span>${y3}</span> years, <span>${m3}</span> months and <span>${d3}</span> days old.`;
   } else {
-    m3--;
-    d3 = getDateInMonths(y1, m1) + d2 - d1;
+    result.innerHTML = "Error, Please choose a valid date of birth";
   }
-  if (m3 < 0) {
-    m3 = 11;
-    y3--;
-  }
-  result.innerHTML = `You are <span>${y3}</span> years, <span>${m3}</span> months and <span>${d3}</span> days old.`;
 }
 
 function getDateInMonths(year, month) {
