@@ -36,9 +36,9 @@
 }
 .input-box input {
   flex: 1;
-  margin-right: 10px;
+  margin-right: 20px;
   position: relative;
-  padding: 14px 5px;
+  padding: 14px 20px;
   font-size: 18px;
   outline: 0;
   border: 0;
@@ -63,7 +63,7 @@
   width: auto;
   height: auto;
   background-position: calc(100% - 10px);
-  background-size: 12px;
+  background-size: 30px;
   cursor: pointer;
 }
 #result {
